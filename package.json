@@ -1,14 +1,19 @@
 {
-  "name": "sheet-reader",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "google-spreadsheet": "^3.3.0"
-  }
+	"name": "sheet-reader",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "npx ts-node index.ts"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^16.0.3",
+		"google-spreadsheet": "^3.3.0"
+	},
+	"devDependencies": {
+		"@types/google-spreadsheet": "^3.3.0",
+		"@types/node": "^18.11.18"
+	}
 }
