@@ -1,22 +1,16 @@
-import { GoogleSpreadsheet } from 'google-spreadsheet';
-import dotenv from 'dotenv';
-import process from 'process';
+import express from 'express';
 
-dotenv.config();
+const app = express();
+const port = 9090;
 
-setupGoogleSheet();
+app.get('/', (_, res) => {
+	res.send('API is running.');
+});
 
-async function setupGoogleSheet() {
-	const doc = new GoogleSpreadsheet(process.env.GOOGLE_SPREADSHEET_ID!);
-	await doc.useServiceAccountAuth({
-		client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL!,
-		private_key: process.env.GOOGLE_PRIVATE_KEY!,
-	});
+app.get('/products', (_, res) => {
+	res.send({ message: 'Hello Tester!' });
+});
 
-	await doc.loadInfo(); // loads document properties and worksheets
-
-	const sheet = doc.sheetsByIndex[0];
-	await sheet.loadCells('A:C');
-
-	console.log(sheet.getCellByA1('A1').value);
-}
+app.listen(port, () => {
+	console.log(`Example app listening on port ${port}`);
+});
