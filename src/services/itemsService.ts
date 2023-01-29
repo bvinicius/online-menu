@@ -6,9 +6,7 @@ import { RepositoryItem } from '../models/items/RepositoryItem';
 type ItemRow = GoogleSpreadsheetRow & RepositoryItem;
 
 export class ItemsService {
-	constructor(private itemsRepository: IDatabaseRepository) {
-		this.itemsRepository.createConnection();
-	}
+	constructor(private itemsRepository: IDatabaseRepository) {}
 
 	async getMultiple(): Promise<ItemModel[]> {
 		const items = await this.itemsRepository.query<ItemRow[]>('items!A:D');
