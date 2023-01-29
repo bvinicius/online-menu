@@ -1,12 +1,14 @@
+import { ItemsService } from '../services/ItemsService';
 
+export class ItemsController {
+	constructor(private itemsService: ItemsService) {}
 
-export class ProductsController {
-    async function get(req, res, next) {
-        try {
-            res.json(await .getMultiple(req.query.page));
-        } catch (err) {
-            console.error(`Error while getting programming languages`, err.message);
-            next(err);
-        }
-      }
+	get = async (req: any, res: any, next: any) => {
+		try {
+			res.json(await this.itemsService.getMultiple());
+		} catch (err: any) {
+			console.error(`Error while getting items`, err.message);
+			next(err);
+		}
+	};
 }
