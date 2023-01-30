@@ -1,16 +1,18 @@
 import { IDatabaseRepository } from '../models/IDatabaseRepository';
 import { Connection, createConnection } from 'mysql';
+import { config } from '../config/mySqlConfig';
 
 export class MySqlRepository implements IDatabaseRepository {
+	private dbConfig = config();
 	private connection?: Connection;
 
 	createConnection(): Promise<void> {
 		this.connection = createConnection({
-			host: process.env.MYSQL_HOST,
-			port: parseInt(process.env.MYSQL_PORT!),
-			user: process.env.MYSQL_USER,
-			password: process.env.MYSQL_PASSWORD,
-			database: process.env.MYSQL_DATABASE,
+			host: this.dbConfig.host,
+			port: this.dbConfig.port,
+			user: this.dbConfig.user,
+			password: this.dbConfig.password,
+			database: this.dbConfig.database,
 		});
 
 		return Promise.resolve();

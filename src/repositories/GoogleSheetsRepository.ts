@@ -1,6 +1,6 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { IDatabaseRepository } from '../models/IDatabaseRepository';
-import { config } from '../config/dbConfig';
+import { config } from '../config/googleSheetsConfig';
 
 export class GoogleSheetsRepository implements IDatabaseRepository {
 	private dbConfig = config();
