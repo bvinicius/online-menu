@@ -20,16 +20,13 @@ export class MySqlRepository implements IDatabaseRepository {
 
 	query<T>(query: string): Promise<T> {
 		return new Promise((resolve) => {
-			this.connection?.query(
-				`SELECT * FROM items`,
-				(error, results, fields) => {
-					if (error) {
-						throw error;
-					}
-					console.log(results);
-					resolve(results);
+			this.connection?.query(query, (error, results) => {
+				if (error) {
+					throw error;
 				}
-			);
+				console.log(results);
+				resolve(results);
+			});
 		});
 	}
 }
